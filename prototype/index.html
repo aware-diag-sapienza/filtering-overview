@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ 
+    <title>2018 Infovis</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style-dark.css" rel="stylesheet">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/fontawesome-all.min.js"></script>
+    <script src="js/d3.v4.min.js"></script>
+    <script src="js/colorbrewer.min.js"></script>
+    <script src="js/stein-events.js"></script>
+    <script src="js/lib.js"></script>
+  </head>
+
+  <body>
+
+    <main role="main">
+
+      
+        <!-- chart-panel -->
+        <div id="chart-panel">
+        </div><!-- /.chart-panel -->
+        <div id="mid-panel">
+            <div class="row align-items-center">
+              <div class="col-3">
+                  <div class="selected-number"></div>
+              </div>
+              <div class="col-6">
+                  <div class="progress" style="height: 20px;">
+                      <div id="selected-progress" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+              </div>
+              <div class="col-3">
+                  <div class="selected-percentage"></div>
+              </div>
+            </div>
+          
+          
+            
+        </div>
+        <!-- bottom-panel -->
+        <div id="bottom-panel">
+          
+          
+            <div id="selector-blocks-container" class="row justify-content-around align-items-center">
+              
+
+            </div>
+          
+
+        </div><!-- /.bottom-panel -->
+
+        <div id="legend">
+          
+          <div class="legend-row">
+            <div class="interval legend-interval selected"></div>
+            <div class="legend-label">Active interval</div>
+          </div>
+          <div class="legend-row">
+            <div class="interval legend-interval total-coverage" ></div>
+            <div class="legend-label">Fully selected</div>
+          </div>
+          <div class="legend-row">
+            <div class="interval legend-interval partial-coverage" ></div>
+            <div class="legend-label">Partially selected</div>
+          </div>
+          <div class="legend-row">
+            <i class="fas fa-caret-up fa-2x arrow-up" ></i>
+            <div class="legend-label">Increment selection</div>
+          </div>
+          <div class="legend-row">
+              <i class="fas fa-caret-down fa-2x arrow-down" ></i>
+              <div class="legend-label">Reduce selection</div>
+          </div>
+        </div>
+
+
+
+        <div id="bottom-bar">
+          <button id="deselect-all" class="btn btn-light btn"><small>Deselect All</small></button>
+        </div>
+
+        <span id="settings"><i class="fas fa-cog"></i></span>
+
+      
+
+    
+      <!-- loading-page -->
+      <div id="loading-page" class="page" style="display:none">
+        <p class="spinner"></p>
+      </div><!-- /.loading-page -->
+
+      
+
+
+
+      <!-- Modal -->
+      <div class="modal fade text-dark" id="modal-settings" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog " role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Settings</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="container">
+                  
+                <div class="row">
+                  <div class="col-12">
+                        <h6>Dataset</h6>
+                        <select class="form-control" id="dataset">
+                          
+                        </select> 
+                  </div>
+                </div>
+                
+                <hr>
+                
+                <div class="row">
+                  <div class="col-12">
+                        <h6>Block Operator <small>(between blocks)</small></h6>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="blockOperation" id="blockOperationAnd" value="AND" checked>
+                            <label class="form-check-label" for="blockOperationAnd">
+                              AND
+                            </label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="blockOperation" id="blockOperationOr" value="OR">
+                            <label class="form-check-label" for="blockOperationOr">
+                              OR
+                            </label>
+                          </div>
+                  </div>
+                </div>
+
+
+                <hr>
+
+                <div class="row">
+                  <div class="col-12">
+                        <h6>Selector Operator <small>(between uniform and boxplot)</small></h6>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="selectorOperation" id="selectorOperationAnd" value="AND" checked>
+                            <label class="form-check-label" for="selectorOperationAnd">
+                              AND
+                            </label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="selectorOperation" id="selectorOperationOr" value="OR">
+                            <label class="form-check-label" for="selectorOperationOr">
+                              OR
+                            </label>
+                          </div>
+                  </div>
+                </div>
+
+                <hr>
+
+                <div class="row">
+                    <div class="col-12">
+                          <h6>Feedback</small></h6>
+                          <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="feedback-domain">
+                              <label class="form-check-label" for="feedback">
+                                Active domain
+                              </label>
+                            </div>
+                          <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="feedback-coverage">
+                              <label class="form-check-label" for="feedback">
+                                Coverage
+                              </label>
+                            </div>
+                            
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="feedback-arrows">
+                              <label class="form-check-label" for="feedback">
+                                Arrows
+                              </label>
+                            </div>
+
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="feedback-tooltip">
+                              <label class="form-check-label" for="feedback">
+                                Tooltips
+                              </label>
+                            </div>
+                            
+                    </div>
+                  </div>
+
+                <hr>
+
+
+                <div class="row">
+                    <div class="col-12">
+                          <h6>Selectors</small></h6>
+                          <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="uniform-selector">
+                              <label class="form-check-label" for="feedback">
+                                Uniform
+                              </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="boxplot-selector">
+                                <label class="form-check-label" for="feedback">
+                                  Boxplot
+                                </label>
+                              </div>
+                    </div>
+                  </div>
+
+              <hr>
+
+              
+              <div class="row">
+                  <div class="col-12">
+                    <h6>Metrics</small></h6>
+                    <div id="metrics-list"></div>
+                    <!--
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="feedback">
+                        <label class="form-check-label" for="feedback">
+                           Uniform
+                        </label>
+                    </div>
+                  -->
+                </div>
+               </div>
+              
+
+
+              </div> 
+            </div>
+            <div class="modal-footer">
+              <!--<button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fas fa-trash"></i> Remove</button>-->
+              <button type="button" id="save-button" class="btn btn-primary btn-sm"  data-dismiss="modal"><i class="fas fa-check"></i> Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <script>
+    
+    </script>
+  </body>
+</html>

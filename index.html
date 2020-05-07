@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en" class="h-100">
+
+<head>
+    <title>On Improving RadViz Visual Effectiveness</title>
+    <!-- link preview -->
+    <meta name="author" content="A.WA.RE Research Group">
+    <meta property="og:site_name" content="A.WA.RE Research Group" />
+    <meta property="og:type" content="object" />
+    <meta property="og:title" content="On Improving RadViz Visual Effectiveness" />
+    <link rel="icon" href="https://avatars0.githubusercontent.com/u/50241094?s=400&amp;v=4">
+    <!-- ./ link preview -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/1daf48f628.js" crossorigin="anonymous"></script>
+    <style>
+        #github-fork {
+            position: fixed;
+            top: 0px;
+            left: 0px;
+        }
+        
+        .container {
+            width: auto;
+            max-width: 1000px;
+            padding: 0 15px;
+            text-align: center;
+        }
+        
+        .footer {
+            background-color: #f5f5f5;
+        }
+        
+        .footer-container {
+            text-align: center;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        
+        .footer-container>* {
+            margin-left: 2em;
+            margin-right: 2em;
+        }
+        
+        .footer-container .btn-link {
+            color: #6c757d!important;
+        }
+        
+        #teaser {
+            margin-top: 2em;
+            margin-bottom: 2em;
+        }
+        
+        #buttons-row {
+            text-align: center;
+        }
+        
+        #buttons-row .btn {
+            width: 200px;
+        }
+        
+        #abstract {
+            margin-top: 3em;
+            margin-bottom: 3em;
+            font-size: 0.8em;
+        }
+        
+        #abstract>* {
+            text-align: left;
+            text-align: justify;
+        }
+    </style>
+</head>
+
+<body class="d-flex flex-column h-100">
+    <!-- https://github.blog/2008-12-19-github-ribbons/ -->
+    <a id="github-fork" href="https://github.com/aware-diag-sapienza/d3-radviz" target="_blank"><img width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_left_darkblue_121621.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+    <!-- Begin page content -->
+    <main role="main" class="flex-shrink-0">
+        <div class="container">
+            <h1 id="title" class="mt-5">CrossWidgets: Enhancing Complex Data Selections through Modular Multi Attribute Selectors</h1>
+            <p id="authors" class="lead">Marco Angelini, Graziano Blasilli, Simone Lenti, Alessia Palleschi, and Giuseppe Santucci.</p>
+            <img id="teaser" src="teaser.png" class="img-fluid" alt="Responsive image">
+            <div id="buttons-row" class="row">
+                <div class="col">
+                    <a role="button" class="btn btn-outline-primary" href="prototype/index.html" target="_blank">
+                        <i class="far fa-window-restore fa-2x"></i><br>
+                        <span>Validation <br>Prototype</span>
+                    </a>
+                </div>
+                <div class="col">
+                    <a role="button" class="btn btn-outline-primary" href="https://www.dropbox.com/s/zuloh1nk2gu30uo/video-crosswidgets.mp4?dl=0" target="_blank">
+                        <i class="fas fa-video fa-2x"></i><br>
+                        <span>Demonstrative<br>Video</span>
+                    </a>
+                </div>
+            </div>
+            <hr>
+            <div id="abstract" class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="lead"><b>Abstract</b></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <p id="abstract-content">
+                                <!---->
+                                Filtering is one of the basic interaction techniques in Information Visualization, with the main objective of limiting the amount of displayed information using constraints on attribute values. Research focused on direct manipulation selection means or
+                                on simple interactors like sliders or check-boxes: while the interaction with a single attribute is, in principle, straightforward, getting an understanding of the relationship between multiple attribute constraints and
+                                the actual selection might be a complex task. To cope with this problem, usually referred as cross-filtering, the paper provides a general definition of the structure of a filter, based on domain values and data distribution,
+                                the identification of visual feedbacks on the relationship between filters status and the current selection, and guidance means to help in fulfilling the requested selection. Then, leveraging on the definition of these
+                                design elements, the paper proposes CrossWidgets, modular attribute selectors that provide the user with feedback and guidance during complex interaction with multiple attributes. An initial controlled experiment demonstrates
+                                the benefits that CrossWidgets provide to cross-filtering activities.
+                                <!---->
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </main>
+
+    <footer class="footer mt-auto py-3">
+        <div class="container footer-container">
+            <span class="text-muted"><b>A.WA.RE Research Group</b></span>
+            <span class="text-muted"><a class="btn btn-link" href="http://aware.diag.uniroma1.it/" target="_blank"><i class="fas fa-link"></i> A.WA.RE Web Page</a></span>
+            <span class="text-muted"><a class="btn btn-link" href="https://github.com/aware-diag-sapienza" target="_blank"><i class="fab fa-github"></i> A.WA.RE GitHub</a></span>
+        </div>
+    </footer>
+</body>
+
+</html>
