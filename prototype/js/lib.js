@@ -796,12 +796,12 @@ window.lib = (new class{
             .call(d3.axisBottom(x));
             
         svg.append("text")
-    	.attr("class","axis-label" )         
-      .attr("transform",
-            "translate(" + (width/2) + " ," + 
+    	    .attr("class","axis-label" )         
+            .attr("transform",
+                "translate(" + (width/2) + " ," + 
                            (height + 20) + ")")
-      .style("text-anchor", "middle")
-      .text("Flavanoids");
+        .style("text-anchor", "middle")
+        .text("X");
 
         // Add the Y Axis
         svg.append("g")
@@ -815,7 +815,7 @@ window.lib = (new class{
       .attr("x",0 - (height / 2))
       .attr("dy", "1em")
       .style("text-anchor", "middle")
-      .text("Color intensity");
+      .text("Y");
     }
 
 
