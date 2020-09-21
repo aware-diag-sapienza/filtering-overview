@@ -785,6 +785,15 @@ window.lib = (new class{
             .attr("r", _this.constants.scatterplotPointSize)
             .attr("cx", function(d) { return x(d.x); })
             .attr("cy", function(d) { return y(d.y); })
+            .each(function(d){
+                let v = d3.entries(d).filter(el => {
+                    return !el.key.startsWith("_") //|| el.key != "x" || el.key != "y"
+                }).map(el => `<small><b>${el.key}</b>: ${el.value}</small>`).join("<br>")
+                tippy(this, {
+                    content: v,
+                    allowHTML: true,
+                })
+            })
             /*.on("change", function(d){
                 d3.select(this).classed("selected", function(d){ return d._selected})
             });*/
